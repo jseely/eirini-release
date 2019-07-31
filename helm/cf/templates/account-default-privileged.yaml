@@ -4,6 +4,7 @@
 # - api-group
 # - autoscaler-api
 # - autoscaler-servicebroker
+# - bits
 # - blobstore
 # - cc-clock
 # - cc-uploader

@@ -201,6 +201,23 @@ secrets:
   # PEM-encoded client key.
   BBS_SERVER_CRT_KEY: ~
 
+  # The basic auth password that the Cloud Controller uses to connect to the
+  # admin endpoint on webdav.
+  # This value uses a generated default.
+  BITS_ADMIN_USERS_PASSWORD: ~
+
+  # This is the key secret Bits-Service uses and clients should use to generate
+  # signed URLs.
+  # This value uses a generated default.
+  BITS_SERVICE_SECRET: ~
+
+  # PEM-encoded client certificate.
+  # This value uses a generated default.
+  BITS_SERVICE_SSL_CERT: ~
+
+  # PEM-encoded client key.
+  BITS_SERVICE_SSL_CERT_KEY: ~
+
   # The basic auth password that Cloud Controller uses to connect to the
   # blobstore server. Auto-generated if not provided. Passwords must be
   # alphanumeric (URL-safe).
@@ -1430,6 +1447,31 @@ sizing:
       request: 2350
       limit: ~
 
+  # The bits instance group contains the following jobs:
+  #
+  # - global-properties: Dummy BOSH job used to host global parameters that are
+  #   required to configure SCF
+  #
+  # - route_registrar: Used for registering routes
+  #
+  # Also: statsd_injector, bpm, and bits-service
+  bits:
+    # Node affinity rules can be specified here
+    affinity: {}
+
+    # The bits instance group cannot be scaled.
+    count: 1
+
+    # Unit [millicore]
+    cpu:
+      request: 2000
+      limit: ~
+
+    # Unit [MiB]
+    memory:
+      request: 256
+      limit: ~
+
   # The blobstore instance group contains the following jobs:
   #
   # - global-properties: Dummy BOSH job used to host global parameters that are
@@ -2156,5 +2198,3 @@ ingress:
   # ingress.tls.crt and ingress.tls.key, when specified, are used by the TLS
   # secret for the Ingress resource.
   tls: {}
-global:
-  rootfs_version: 'v79.0.0'
