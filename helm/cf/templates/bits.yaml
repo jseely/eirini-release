@@ -81,6 +81,8 @@ kind: "List"
 #
 # - route_registrar: Used for registering routes
 #
+# - eirinifs: This job copies the eirinifs to a desired location
+#
 # Also: statsd_injector, bpm, and bits-service
 
 {{- if gt (int .Values.sizing.bits.count) 1 }}
@@ -395,7 +397,7 @@ spec:
           value: {{ .Values.kube.limits.nproc.hard | quote }}
         - name: "VCAP_SOFT_NPROC"
           value: {{ .Values.kube.limits.nproc.soft | quote }}
-        image: "{{ .Values.kube.registry.hostname }}/{{ .Values.kube.organization }}/scf-bits:a5e420cfb00d7e99177873ad4b272615ff6cec78"
+        image: "{{ .Values.kube.registry.hostname }}/{{ .Values.kube.organization }}/scf-bits:53838527d2bdf33924cfb06ff9df2ce2dad513b6"
         lifecycle:
           preStop:
             exec:

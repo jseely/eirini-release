@@ -1454,6 +1454,8 @@ sizing:
   #
   # - route_registrar: Used for registering routes
   #
+  # - eirinifs: This job copies the eirinifs to a desired location
+  #
   # Also: statsd_injector, bpm, and bits-service
   bits:
     # Node affinity rules can be specified here
@@ -2198,5 +2200,3 @@ ingress:
   # ingress.tls.crt and ingress.tls.key, when specified, are used by the TLS
   # secret for the Ingress resource.
   tls: {}
-global:
-  rootfs_version: 'v79.0.0'
